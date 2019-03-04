@@ -33,6 +33,7 @@ let request;
 
 const fondo = (state) => {
     if (state === 'play') {
+        document.body.requestFullscreen()
         let ctx = canvas.getContext('2d')
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         let p = ctx.getImageData(0, 0, canvas.width, canvas.height)
