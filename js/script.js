@@ -37,6 +37,7 @@ const fondo = (state) => {
         let ctx = canvas.getContext('2d')
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         let p = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        console.log(p.data.length)
         requestAnimationFrame(function draw() {
             for (var i = 0; i < p.data.length; i++) {
                 p.data[i++] = p.data[i++] = p.data[i++] = Math.random() * 255
