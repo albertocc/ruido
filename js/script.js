@@ -8,6 +8,11 @@
 // const play = document.querySelector('.play')
 const canvas = document.querySelector('#canvas')
 
+const w = window.innerWidth
+const h = window.innerHeight
+canvas.width = w/8
+canvas.height = h/8
+
 canvas.addEventListener('click', () => {
     noise.state === 'stopped' ? fondo('play') : fondo('stop')
 })
@@ -33,7 +38,7 @@ let request;
 
 const fondo = (state) => {
     if (state === 'play') {
-        document.body.requestFullscreen()
+        // document.body.requestFullscreen()
         let ctx = canvas.getContext('2d')
         ctx.fillRect(0, 0, canvas.width, canvas.height)
         let p = ctx.getImageData(0, 0, canvas.width, canvas.height)
@@ -44,11 +49,13 @@ const fondo = (state) => {
             ctx.putImageData(p, 0, 0)
             request = requestAnimationFrame(draw)
         })
-        noise.start()
+        // noise.start()
     } else if (state === 'stop') {
         let ctx = canvas.getContext('2d')
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        noise.stop()
+        // noise.stop()
         cancelAnimationFrame(request)
     }
 }
+
+fondo('play')
